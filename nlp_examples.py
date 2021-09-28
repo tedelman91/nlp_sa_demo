@@ -7,47 +7,47 @@
 # nltk.download('stopwords')
 
 
-# #seperate all words from a string 
-# from nltk.tokenize import word_tokenize
-# Text = "Good morning, How are you doing? Are you coming tonight?"
-# Tokenized = word_tokenize(Text)
-# print("\n Print the string \"{}\" as seperate words".format(Text))
-# print(str(Tokenized) + "\n")
+#seperate all words from a string 
+from nltk.tokenize import word_tokenize
+Text = "Good morning, How are you doing? Are you coming tonight?"
+Tokenized = word_tokenize(Text)
+print("\n Print the string \"{}\" as seperate words".format(Text))
+print(str(Tokenized) + "\n")
 
 
-# #seperate a paragraph into individual sentences 
-# from nltk.tokenize import sent_tokenize
-# Text = "Good morning, How are you doing? Are you coming tonight?"
-# Tokenized = sent_tokenize(Text)
-# print("\n Print the paragraph \"{}\" as seperate sentences".format(Text))
-# print(str(Tokenized) + "\n")
+#seperate a paragraph into individual sentences 
+from nltk.tokenize import sent_tokenize
+Text = "Good morning, How are you doing? Are you coming tonight?"
+Tokenized = sent_tokenize(Text)
+print("\n Print the paragraph \"{}\" as seperate sentences".format(Text))
+print(str(Tokenized) + "\n")
 
-# #show what stopwords are
-# from nltk.corpus import stopwords
-# stopwords = stopwords.words("english")
-# print("Stopwords that are filtered out: \n" + str(stopwords) + "\n")
+#show what stopwords are
+from nltk.corpus import stopwords
+stopwords = stopwords.words("english")
+print("Stopwords that are filtered out: \n" + str(stopwords) + "\n")
 
-# #seperate stopwords from sentences
-# from nltk.corpus import stopwords
-# stopwords = stopwords.words("english")
-# Text = ["Good", "morning", "How", "you", "doing", "Are", "you", "coming", "tonight"]
-# nonstop_words = []
-# for i in Text:
-#    if i not in stopwords:
-#        nonstop_words.append(i)
-# print("\n Print the words \"{}\" without stop words".format(Text))
-# print(str(Tokenized) + "\n")
+#seperate stopwords from sentences
+from nltk.corpus import stopwords
+stopwords = stopwords.words("english")
+Text = ["Good", "morning", "How", "you", "doing", "Are", "you", "coming", "tonight"]
+nonstop_words = []
+for i in Text:
+   if i not in stopwords:
+       nonstop_words.append(i)
+print("\n Print the words \"{}\" without stop words".format(Text))
+print(str(Tokenized) + "\n")
 
 
-# #get the stems of words 
-# from nltk.stem import PorterStemmer
-# ps = PorterStemmer()
-# words = ["Loving", "Chocolate", "Retrieved", "Being"]
-# word_stems = []
-# for i in words:
-#    word_stems.append(i)
-# print("\nGet the word stems from \"{}\" ".format(words))
-# print("Word stems: " + str(word_stems) + "\n")
+#get the stems of words 
+from nltk.stem import PorterStemmer
+ps = PorterStemmer()
+words = ["Loving", "Chocolate", "Retrieved", "Being"]
+word_stems = []
+for i in words:
+   word_stems.append(i)
+print("\nGet the word stems from \"{}\" ".format(words))
+print("Word stems: " + str(word_stems) + "\n")
 
 
 #count words 
