@@ -21,8 +21,12 @@ stopwords = stopwords.words("english")
 #clear terminal to view new print statements 
 print("\n\n\n\n\n\n")
 
-#############################################################setup_twitter_and_test################################################
+#majority of code sourced from:
+# https://livecodestream.dev/post/intro-to-natural-language-processing-with-python/
+#https://livecodestream.dev/post/detecting-the-sentiment-on-elon-musks-tweets-with-python/
+#twitter API docs https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline
 
+#############################################################setup_twitter_and_test################################################
 
 # Create The Authenticate Object
 authenticate = tweepy.OAuthHandler(api_key, api_secret_key)
@@ -41,7 +45,7 @@ for tweet in tweets:
 #############################################################data_setup_and_cleaning################################################
 
 # Create The API Object and retreive 200 tweets 
-tweets = api.user_timeline(screen_name = "elonmusk", count = 500, tweet_mode = "extended")
+tweets = api.user_timeline(screen_name = "elonmusk", count = 200, tweet_mode = "extended")
 
 #put tweet data into a pandas dataframe to work with  
 df = pd.DataFrame([tweet.full_text for tweet in tweets], columns = ["tweet"])
@@ -58,7 +62,6 @@ def cleantext(text):
 df["tweet"] = df["tweet"].apply(cleantext)
 
 #remove stopwords 
-print(stopwords)
 df["tweet"] =  df["tweet"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stopwords)]))
 
 
@@ -95,27 +98,35 @@ df["analysis"] = df["polarity"].apply(analysis_definition)
 # Print The Data
 print(df)
 
+#If twitter API won't return consistent results you can use the csv in the project for plotting and analysis 
+#df = pd.read_csv("200_tweets.csv")
 #Explore what positive and negatice tweets look like 
 positive_tweets = df[df['analysis'] == 'Positive']
 negative_tweets = df[df['analysis'] == 'Negative']
 
+
 print('\n positive tweets')
-for i, row in positive_tweets[:5].iterrows():
+for i, row in positive_tweets[:10].iterrows():
   print(' -' + row['tweet'])
 
 print('\n negative tweets')
-for i, row in negative_tweets[:5].iterrows():
+for i, row in negative_tweets[:10].iterrows():
   print(' -' + row['tweet'])
-  print("\n\n")
+
 
 #############################################################analyze_findings################################################
 
-# plt.figure(figsize=(10, 8))
 
-# for i in range(0, df.shape[0]):
-#     plt.scatter(df["polarity"][i], df["subjectivity"][i], color = "Red")
+sentiment_ratio =  len(positive_tweets) / len(negative_tweets)
+print(f"\n Since the ratio of positive to negative tweets is {sentiment_ratio}, we can conclude Elon Musk's tweets are primarily positive")
 
-# plt.title("Sentiment Analysis") # Add The Graph Title
-# plt.xlabel("Polarity") # Add The X-Label
-# plt.ylabel("Subjectivity") # Add The Y-Label
-# plt.show() # Showing The Graph
+#plot negative and positive tweets 
+plt.figure(figsize=(10, 8))
+
+for i in range(0, df.shape[0]):
+    plt.scatter(df["polarity"][i], df["subjectivity"][i], color = "Red")
+
+plt.title("Sentiment Analysis") # Add The Graph Title
+plt.xlabel("Polarity") # Add The X-Label
+plt.ylabel("Subjectivity") # Add The Y-Label
+plt.show() # Showing The Graph

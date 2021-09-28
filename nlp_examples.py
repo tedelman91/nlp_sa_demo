@@ -6,6 +6,9 @@
 # import nltk
 # nltk.download('stopwords')
 
+#majority of code sourced from:
+# https://livecodestream.dev/post/intro-to-natural-language-processing-with-python/
+#https://livecodestream.dev/post/detecting-the-sentiment-on-elon-musks-tweets-with-python/
 
 #seperate all words from a string 
 from nltk.tokenize import word_tokenize
