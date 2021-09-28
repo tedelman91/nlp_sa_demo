@@ -3,7 +3,6 @@ from setup import get_creds
 import pandas as pd
 import re
 from textblob import TextBlob
-import os
 from nltk.corpus import stopwords
 from collections import Counter
 import matplotlib.pyplot as plt
