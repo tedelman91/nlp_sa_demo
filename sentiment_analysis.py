@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 from collections import Counter
 import matplotlib.pyplot as plt
 
-#############################################################setup_env############################################################
+#############################################################setup_env######################################################################
 
 # secrets setup to retreive twitter api keys 
 credentials = get_creds()
@@ -25,7 +25,7 @@ print("\n\n\n\n\n\n")
 #https://livecodestream.dev/post/detecting-the-sentiment-on-elon-musks-tweets-with-python/
 #twitter API docs https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline
 
-#############################################################setup_twitter_and_test################################################
+#############################################################setup_twitter_and_test##########################################################
 
 # Create The Authenticate Object
 authenticate = tweepy.OAuthHandler(api_key, api_secret_key)
@@ -41,7 +41,7 @@ for tweet in tweets:
     print(f"- {tweet.full_text}")
 
 
-#############################################################data_setup_and_cleaning################################################
+#############################################################data_setup_and_cleaning#########################################################
 
 # Create The API Object and retreive 200 tweets 
 tweets = api.user_timeline(screen_name = "elonmusk", count = 200, tweet_mode = "extended")
@@ -64,7 +64,7 @@ df["tweet"] = df["tweet"].apply(cleantext)
 df["tweet"] =  df["tweet"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stopwords)]))
 
 
-#############################################################nlp_and_sentiment_analysis################################################
+#############################################################nlp_and_sentiment_analysis######################################################
 
 #show top 20 most frequently used words
 word_count = Counter(" ".join(df['tweet']).split()).most_common(20)
@@ -100,7 +100,7 @@ print(df)
 # If twitter API won't return consistent results you can use the csv in the project for plotting and analysis 
 #df = pd.read_csv("200_tweets.csv")
 
-#Explore what positive and negatice tweets look like 
+#Explore what positive and negative tweets look like 
 positive_tweets = df[df['analysis'] == 'Positive']
 negative_tweets = df[df['analysis'] == 'Negative']
 
@@ -114,7 +114,7 @@ for i, row in negative_tweets[:10].iterrows():
   print(' -' + row['tweet'])
 
 
-#############################################################analyze_findings################################################
+#############################################################analyze_findings###############################################################
 
 
 sentiment_ratio =  len(positive_tweets) / len(negative_tweets)
