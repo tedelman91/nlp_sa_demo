@@ -10,6 +10,7 @@
 # https://livecodestream.dev/post/intro-to-natural-language-processing-with-python/
 #https://livecodestream.dev/post/detecting-the-sentiment-on-elon-musks-tweets-with-python/
 
+
 #seperate all words from a string 
 from nltk.tokenize import word_tokenize
 Text = "Good morning, How are you doing? Are you coming tonight?"
@@ -66,7 +67,7 @@ print("\n")
 from textblob import TextBlob
 Text = "Hhow long does it takde to drived to California?"
 spelling_mistakes = TextBlob(Text)
-print("Print spelling mistakes in the sentence \"{}\"".format(Text))
-print(spelling_mistakes.correct()+"\n")
+print("Incorrect sentence with spelling mistakes: \"{}\"".format(Text))
+print("Corrected sentence: " + str(spelling_mistakes.correct()) +"\n")
 
 

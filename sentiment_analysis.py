@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 #############################################################setup_env############################################################
 
-#secrets setup to retreive twitter api keys 
+# secrets setup to retreive twitter api keys 
 credentials = get_creds()
 api_key = credentials["api_key"]
 api_secret_key = credentials["api_key_secret"]
@@ -21,8 +21,8 @@ stopwords = stopwords.words("english")
 #clear terminal to view new print statements 
 print("\n\n\n\n\n\n")
 
-#majority of code sourced from:
-# https://livecodestream.dev/post/intro-to-natural-language-processing-with-python/
+# majority of code sourced from:
+#https://livecodestream.dev/post/intro-to-natural-language-processing-with-python/
 #https://livecodestream.dev/post/detecting-the-sentiment-on-elon-musks-tweets-with-python/
 #twitter API docs https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline
 
@@ -98,8 +98,9 @@ df["analysis"] = df["polarity"].apply(analysis_definition)
 # Print The Data
 print(df)
 
-#If twitter API won't return consistent results you can use the csv in the project for plotting and analysis 
+# If twitter API won't return consistent results you can use the csv in the project for plotting and analysis 
 #df = pd.read_csv("200_tweets.csv")
+
 #Explore what positive and negatice tweets look like 
 positive_tweets = df[df['analysis'] == 'Positive']
 negative_tweets = df[df['analysis'] == 'Negative']
