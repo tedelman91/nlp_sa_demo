@@ -34,13 +34,13 @@ print("Stopwords that are filtered out: \n" + str(stopwords) + "\n")
 #seperate stopwords from sentences
 from nltk.corpus import stopwords
 stopwords = stopwords.words("english")
-Text = ["Good", "morning", "How", "you", "doing", "Are", "you", "coming", "tonight"]
+Text = ["Don't", "you", "think", "that", "was", "a", "great", "movie", "we", "saw", "tonight", "?"]
 nonstop_words = []
 for i in Text:
    if i not in stopwords:
        nonstop_words.append(i)
-print("\n Print the words \"{}\" without stop words".format(Text))
-print(str(Tokenized) + "\n")
+print("\nPrint the words \"{}\" without stop words".format(Text))
+print(str(nonstop_words) + "\n")
 
 
 #get the stems of words 
@@ -49,7 +49,7 @@ ps = PorterStemmer()
 words = ["Loving", "Chocolate", "Retrieved", "Being"]
 word_stems = []
 for i in words:
-   word_stems.append(i)
+   word_stems.append(ps.stem(i))
 print("\nGet the word stems from \"{}\" ".format(words))
 print("Word stems: " + str(word_stems) + "\n")
 
@@ -69,5 +69,3 @@ Text = "Hhow long does it takde to drived to California?"
 spelling_mistakes = TextBlob(Text)
 print("Incorrect sentence with spelling mistakes: \"{}\"".format(Text))
 print("Corrected sentence: " + str(spelling_mistakes.correct()) +"\n")
-
-
